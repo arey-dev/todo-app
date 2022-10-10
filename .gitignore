@@ -15,5 +15,6 @@
 .DS_Store
 .prettierignore
 
-# ignore node_modules
+# ignore webpack generated files
 node_modules/
+dist/
