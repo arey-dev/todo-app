@@ -18,3 +18,4 @@
 # ignore webpack generated files
 node_modules/
 dist/
+.vscode/
