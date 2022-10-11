@@ -1,0 +1,39 @@
+/* Custom variables */
+:root {
+  /* colors */
+  --clr-primary-400: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --clr-primary-500: hsl(220, 98%, 61%);
+
+  --clr-theme-light-400: hsl(0, 0%, 98%);
+  --clr-theme-light-500: hwb(235 89% 5%);
+  --clr-theme-light-600: hsl(233, 11%, 84%);
+  --clr-theme-light-700: hsl(236, 9%, 61%);
+  --clr-theme-light-800: hsl(235, 19%, 35%);
+
+  --clr-theme-dark-400: hsl(235, 21%, 11%);
+  --clr-theme-dark-500: hsl(235, 24%, 19%);
+  --clr-theme-dark-600: hsl(234, 39%, 85%);
+  --clr-theme-dark-700: hsl(234, 11%, 52%);
+  --clr-theme-dark-800: hsl(233, 14%, 35%);
+  --clr-theme-dark-900: hsl(237, 14%, 26%);
+  
+  --clr-accent-dark: hsl(234, 11%, 52%);
+
+  /* fonts */
+  --ff-primary: 'Josefin Sans', sans-serif;
+
+  --fs-400: 1.125rem;
+  
+  --fw-rg: 400;
+  --fw-bld: 700;
+  
+  --body-fs: var(--fs-400);
+  --body-fw: var(--fw-rg)
+  --heading-fw: var(--fw-bld); 
+}
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--body-fs);
+  font-weight: var(--body-fw);
+}
