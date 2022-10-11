@@ -19,6 +19,40 @@
   <Title>Todo App</Title>
 </head>
 <body>
-  
+  <header>
+    <div class="container">
+      <h1>TODO</h1>
+      <div class="icon-wrapper"></div>
+    </div>
+  </header>
+  <main>
+    <section id="todo">
+      <h2 class="sr-only">Todo Section</h2>
+      <div class="container">
+        <form name="todo">
+          <p class="form-control">
+            <label for="task">Create a new todo</label>
+            <input type="text" name="task" id="task" placeholder="Create a new todo...">
+          </p>
+          <fieldset>
+            <legend class="sr-only">Tasks</legend>
+          </fieldset>
+          <nav aria></nav>
+          <footer>
+            <p class="task"></p>
+            <nav class="nav" aria-labelledby="navLabel">
+              <h2 class="sr-only" id="navLabel">Form Menu</h2>
+              <div class="navbar">
+                <button class="button nav-item">All</button>
+                <button class="button nav-item">Active</button>
+                <button class="button nav-item">Completed</button>
+              </div>
+            </nav>
+            <button class="button button-clear">Clear completed</button>
+          </footer>
+        </form>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
