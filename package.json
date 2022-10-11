@@ -1,7 +1,7 @@
 {
   "name": "todo-app",
   "version": "1.0.0",
-  "description": "Project from Fronend Mentor",
+  "description": "Project from Frontend Mentor",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
