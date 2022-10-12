@@ -20,9 +20,9 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container flex | container-header">
       <h1>TODO</h1>
-      <div class="icon-wrapper"></div>
+      <div class="img-wrapper | theme-icon"></div>
     </div>
   </header>
   <main>
@@ -30,32 +30,44 @@
       <h2 class="sr-only">Todo Section</h2>
       <div class="container">
         <form name="todo">
-          <p class="form-control">
-            <label for="task">Create a new todo</label>
-            <input type="text" name="task" id="task" placeholder="Create a new todo...">
-          </p>
+          <div class="flex task | task-container">
+            <div class="check-container">
+              <div class="border | default">
+                <div class="check"></div>
+              </div>
+            </div>
+            <p class="task-input-control">
+              <label for="task-input" class="sr-only">Create a new todo</label>
+              <input type="text" name="task" id="task-input" placeholder="Create a new todo...">
+            </p>
+          </div>
         </form>
-        <section>
-          <h2 class="sr-only">Tasks</h2>
-          <div class="tasks-container"></div>
-          <footer>
-            <p class="items-left"></p>
+        <section class="task-container">
+          <h3 class="sr-only">Tasks</h3>
+          <!-- <ul class="task-list">
+            <li class="flex | task">
+              <div class="check-container">
+                <div class="border">
+                  <div class="check"></div>
+                </div>
+              </div>
+              Jog for 1 hour.
+            </li>
+          </ul> -->
+          <footer class="task flex">
+            <p class="items-left">items left</p>
             <nav class="nav" aria-labelledby="navLabel">
-              <h2 class="sr-only" id="navLabel">Form Menu</h2>
+              <h2 class="sr-only" id="navLabel">Tasks menu</h2>
               <div class="navbar">
-                <button class="button nav-item">All</button>
-                <button class="button nav-item">Active</button>
-                <button class="button nav-item">Completed</button>
+                <button class="button nav-item" data-menu="all">All</button>
+                <button class="button nav-item" data-menu="active">Active</button>
+                <button class="button nav-item" data-menu="completed">Completed</button>
               </div>
             </nav>
             <button class="button button-clear">Clear completed</button>
-          </footer> -->
+          </footer>
         </section>
       </div>
-      <!-- <fieldset>
-        <legend class="sr-only">Tasks</legend>
-      </fieldset>
-    
     </section>
   </main>
 </body>
