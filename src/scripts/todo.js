@@ -1,5 +1,5 @@
-// todo items
-const todoFactory = (title) => {
+// todo factory
+const todo = (title) => {
   let isActive = true;
 
   const setActive = (bool) => {
@@ -17,4 +17,4 @@ const todoFactory = (title) => {
   };
 };
 
-export default todoFactory;
+export default todo;
