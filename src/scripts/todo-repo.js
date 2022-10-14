@@ -8,7 +8,7 @@ const todoRepo = {
   },
 
   deleteTodo(id) {
-    this.splice(id, 0);
+    this.todos.splice(id, 0);
   },
 };
 
