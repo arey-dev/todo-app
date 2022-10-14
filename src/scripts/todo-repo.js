@@ -10,6 +10,6 @@ const todoRepo = {
   deleteTodo(id) {
     this.splice(id, 0);
   },
-}
+};
 
 export default todoRepo;
