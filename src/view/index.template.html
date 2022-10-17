@@ -26,45 +26,55 @@
     </div>
   </header>
   <main>
-    <section id="todo">
+    <section>
       <h2 class="sr-only">Todo Section</h2>
-      <div class="container">
-        <div class="user-input-container">
-          <div class="flex | task">
-            <p class="right">
-              <label for="task-input" class="sr-only">Create a new todo</label>
-              <input type="text" name="task" id="task-input" placeholder="Create a new todo...">
-            </p>
-            <div class="left | border">
-              <div aria-label="submit" role="button" class="check"></div>
-            </div>
-          </div>
-        </div>
-        <section class="task-container">
-          <h3 class="sr-only">Tasks</h3>
-          <ul class="task-list">
-            <!-- <li class="flex | task">
-              <div class="border">
-                <div aria-label="select" role="button" class="check"></div>
-              </div>
-              <p>Jog for 1 hour.</p>
-            </li> -->
-          </ul>
-          <footer class="task flex">
-            <p class="items-left">items left</p>
-            <nav class="nav" aria-labelledby="navLabel">
-              <h2 class="sr-only" id="navLabel">Tasks menu</h2>
-              <div class="navbar">
-                <button class="button nav-item" data-menu="all">All</button>
-                <button class="button nav-item" data-menu="active">Active</button>
-                <button class="button nav-item" data-menu="completed">Completed</button>
-              </div>
-            </nav>
-            <button class="button button-clear">Clear completed</button>
-          </footer>
-        </section>
+      <div id="main-content" class="container">
       </div>
     </section>
   </main>
+
+  <template id="todo-input-template">
+    <form id="user-input-container">
+      <h3>Todo Form</h3>
+      <div class="flex | task">
+        <p class="right">
+          <label for="task-input" class="sr-only">Create a new todo</label>
+          <input type="text" name="task" id="task-input" placeholder="Create a new todo...">
+        </p>
+        <div class="left | border">
+          <div aria-label="submit" role="button" class="check"></div>
+        </div>
+      </div>
+    </form>
+  </template>
+
+  <template id="todo-list-template">
+    <section id="task-container">
+      <h3 class="sr-only">Tasks</h3>
+      <ul class="task-list">
+        <!-- <li class="flex | task">
+          <div class="border">
+            <div aria-label="select" role="button" class="check"></div>
+          </div>
+          <p>Jog for 1 hour.</p>
+        </li> -->
+      </ul>
+    </section>
+  </template>
+  
+  <template id="footer-template">
+    <footer class="task flex">
+      <p class="items-left">items left</p>
+      <nav class="nav" aria-labelledby="navLabel">
+        <h2 class="sr-only" id="navLabel">Tasks menu</h2>
+        <div class="navbar">
+          <button class="button nav-item" data-menu="all">All</button>
+          <button class="button nav-item" data-menu="active">Active</button>
+          <button class="button nav-item" data-menu="completed">Completed</button>
+        </div>
+      </nav>
+      <button class="button button-clear">Clear completed</button>
+    </footer>
+  </template>
 </body>
 </html>
