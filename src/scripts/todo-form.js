@@ -5,13 +5,14 @@ import PubSub from "pubsub-js";
 import todo from "./todo";
 
 const createTask = () => {
-  const input = document.forms[0].elements['task-input'];
+  const input = document.forms[0].elements["task-input"];
 
+  // create todo object
   const task = todo(input.value);
 
   // publish
   PubSub.publish("addTodo", task);
-}
+};
 
 const todoForm = (container) => {
   const template = document.getElementById("todo-form-template");
