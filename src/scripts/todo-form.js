@@ -5,7 +5,7 @@ import PubSub from "pubsub-js";
 import todo from "./todo";
 
 const createTask = () => {
-  const input = document.forms[0].elements["task-input"];
+  const input = document.forms.todo.elements["task-input"];
 
   if (input.value) {
     // create todo object
@@ -18,14 +18,24 @@ const createTask = () => {
   }
 };
 
+const resetForm = (form) => {
+  form.reset();
+};
+
 const todoForm = (container) => {
   const template = document.getElementById("todo-form-template");
-  const form = template.content.cloneNode(true);
+  const content = template.content.cloneNode(true);
+  
+  const form = content.querySelector('form[name="todo"]');
+  const input = content.querySelector('input[name="task-input"]');
+  const checkBtn = content.querySelector(".check-btn");
+  const removeBtn = content.querySelector(".remove-btn");
+  
+  container.append(content);
 
-  const btn = form.querySelector('[role="button"]');
-  const input = form.querySelector('input[name="task-input"]');
+  checkBtn.onclick = () => createTask();
 
-  btn.onclick = createTask;
+  removeBtn.onclick = () => resetForm(form);
 
   input.onkeydown = (e) => {
     if (e.key === "Enter") {
@@ -33,9 +43,6 @@ const todoForm = (container) => {
     }
   };
 
-  // btn.onclick = createTask;
-
-  container.append(form);
 };
 
 export default todoForm;
