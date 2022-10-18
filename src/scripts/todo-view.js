@@ -5,12 +5,12 @@
 
 const todoView = (obj) => {
   const template = document.getElementById("task-template");
-  const taskElem = template.content.cloneNode(true);
+  const content = template.content.cloneNode(true);
 
-  const taskTitle = taskElem.querySelector(".task p");
+  const taskTitle = content.querySelector(".task p");
   taskTitle.textContent = obj.getTitle();
 
-  document.querySelector("#task-container .task-list").append(taskElem);
+  document.querySelector("#task-container .task-list").append(content);
 };
 
 export default todoView;
