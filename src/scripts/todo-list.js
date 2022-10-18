@@ -6,7 +6,7 @@
 const todoList = {
   list: [],
 
-  addTodo: (obj) => {
+  addTodo(obj) {
     this.list.push(obj);
   },
 };
