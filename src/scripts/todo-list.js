@@ -1,18 +1,30 @@
 /**
  * repository for todos and
  * functions to manage it
+ *
+ * TRANSFER ALL PUBSUB METHODS TO ANOTHER FILE, E.G CONTROLLER
  */
+import PubSub from "pubsub-js";
 
 const todoList = {
   list: [],
 
   addTodo(obj) {
-    this.list.push(obj);
+    const item = this.list.find(
+      (itm) => itm.getTitle().toLowerCase() === obj.getTitle().toLowerCase()
+    );
+
+    if (!item) {
+      this.list.push(obj);
+      PubSub.publish("addTodoUi", obj);
+      PubSub.publish("updateStats", this.list.length);
+    }
   },
 
-  deleteTodo(id) {
-    this.list.splice(id, 1);
-  }
+  deleteTodo(title) {
+    this.list = this.list.filter((obj) => obj.getTitle() !== title);
+    PubSub.publish("updateStats", this.list.length);
+  },
 };
 
 export default todoList;
