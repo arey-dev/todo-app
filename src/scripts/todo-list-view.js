@@ -6,13 +6,18 @@ import PubSub from "pubsub-js";
 import todoList from "./todo-list";
 import todoView from "./todo-view";
 
+// transfer the pubsub in todo-list
 const removeTodoUi = (event) => {
   // eslint-disable-next-line prefer-destructuring
   const target = event.target;
 
-  if (event.target.classList.contains("cross")) {
+  if (event.target.classList.contains("remove-btn")) {
     const li = target.closest("li");
+    const title = li.querySelector(".title").textContent;
+
     li.remove();
+
+    PubSub.publish("removeTodo", title);
   }
 };
 
@@ -26,16 +31,21 @@ const todosView = (container) => {
 
   listCont.onclick = removeTodoUi;
 
+  // to be put on another file
   const addTodoBound = todoList.addTodo.bind(todoList);
   PubSub.subscribe("addTodo", (msg, data) => {
     addTodoBound(data);
   });
 
-  PubSub.subscribe("addTodo", (msg, data) => {
+  PubSub.subscribe("addTodoUi", (msg, data) => {
     todoView(data);
   });
 
   // add pubsub topic for remove todo
+  const delTodoBound = todoList.deleteTodo.bind(todoList);
+  PubSub.subscribe("removeTodo", (msg, data) => {
+    delTodoBound(data);
+  });
 };
 
 export default todosView;
