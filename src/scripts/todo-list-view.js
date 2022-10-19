@@ -2,8 +2,10 @@
  * renders the container
  * for list of todos
  */
+
+/* eslint no-param-reassign: ["error", { "props": false }] */
+
 import PubSub from "pubsub-js";
-import todoList from "./todo-list";
 import todoView from "./todo-view";
 
 // transfer the pubsub in todo-list
@@ -21,31 +23,37 @@ const removeTodoUi = (event) => {
   }
 };
 
-const todosView = (container) => {
+const removeElemContent = (elem) => {
+  elem.innerHTML = "";
+  PubSub.publish("clearTodos");
+};
+
+// updates the text content of an element
+const updateText = (data, elem) => {
+  elem.textContent = data;
+};
+
+const todoListView = (container) => {
   const template = document.getElementById("todo-list-template");
   const content = template.content.cloneNode(true);
 
-  const listCont = content.querySelector("#task-container ul");
+  const todosCont = content.querySelector("#task-container ul");
+  const statsElem = content.querySelector("span.items-left");
+  const clearBtn = content.querySelector("footer .button-clear");
 
   container.append(content);
 
-  listCont.onclick = removeTodoUi;
+  todosCont.onclick = removeTodoUi;
 
-  // to be put on another file
-  const addTodoBound = todoList.addTodo.bind(todoList);
-  PubSub.subscribe("addTodo", (msg, data) => {
-    addTodoBound(data);
-  });
+  clearBtn.onclick = () => removeElemContent(todosCont);
 
   PubSub.subscribe("addTodoUi", (msg, data) => {
     todoView(data);
   });
 
-  // add pubsub topic for remove todo
-  const delTodoBound = todoList.deleteTodo.bind(todoList);
-  PubSub.subscribe("removeTodo", (msg, data) => {
-    delTodoBound(data);
+  PubSub.subscribe("updateStats", (msg, data) => {
+    updateText(data, statsElem);
   });
 };
 
-export default todosView;
+export default todoListView;
