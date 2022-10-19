@@ -25,6 +25,23 @@ const todoList = {
     this.list = this.list.filter((obj) => obj.getTitle() !== title);
     PubSub.publish("updateStats", this.list.length);
   },
+
+  clearList() {
+    this.list = [];
+    PubSub.publish("updateStats", this.list.length);
+  },
 };
 
-export default todoList;
+export default function subscribers() {
+  // to be put on another file
+  PubSub.subscribe("addTodo", (msg, data) => {
+    todoList.addTodo(data);
+  });
+  PubSub.subscribe("removeTodo", (msg, data) => {
+    todoList.deleteTodo(data);
+  });
+
+  PubSub.subscribe("clearTodos", () => {
+    todoList.clearList();
+  });
+}
