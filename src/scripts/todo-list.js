@@ -10,10 +10,12 @@ const todoList = {
   list: [],
 
   addTodo(obj) {
+    // checks if the input already exist in the list
     const item = this.list.find(
       (itm) => itm.getTitle().toLowerCase() === obj.getTitle().toLowerCase()
     );
 
+    // add the input if it's not in the list yet
     if (!item) {
       this.list.push(obj);
       PubSub.publish("addTodoUi", obj);
@@ -26,6 +28,7 @@ const todoList = {
     PubSub.publish("updateStats", this.list.length);
   },
 
+  // change to clear complete
   clearList() {
     this.list = [];
     PubSub.publish("updateStats", this.list.length);
@@ -43,5 +46,13 @@ export default function subscribers() {
 
   PubSub.subscribe("clearTodos", () => {
     todoList.clearList();
+  });
+
+  PubSub.subscribe("toggleState", (msg, data) => {
+    todoList.list.forEach((obj) => {
+      if (obj.getTitle() === data) {
+        obj.toggleState();
+      }
+    });
   });
 }
