@@ -7,21 +7,9 @@
 
 import PubSub from "pubsub-js";
 import todoView from "./todo-view";
+import menuView from "./menu";
 
 // transfer the pubsub in todo-list
-const removeTodoUi = (event) => {
-  // eslint-disable-next-line prefer-destructuring
-  const target = event.target;
-
-  if (event.target.classList.contains("remove-btn")) {
-    const li = target.closest("li");
-    const title = li.querySelector(".title").textContent;
-
-    li.remove();
-
-    PubSub.publish("removeTodo", title);
-  }
-};
 
 const removeElemContent = (elem) => {
   elem.innerHTML = "";
@@ -37,16 +25,20 @@ const todoListView = (container) => {
   const template = document.getElementById("todo-list-template");
   const content = template.content.cloneNode(true);
 
+  const footer = content.querySelector("footer");
   const todosCont = content.querySelector("#task-container ul");
   const statsElem = content.querySelector("span.items-left");
   const clearBtn = content.querySelector("footer .button-clear");
 
+  // Append menu
+  menuView(footer);
+
   container.append(content);
 
-  todosCont.onclick = removeTodoUi;
-
+  // Events
   clearBtn.onclick = () => removeElemContent(todosCont);
 
+  // Pubsub
   PubSub.subscribe("addTodoUi", (msg, data) => {
     todoView(data);
   });
