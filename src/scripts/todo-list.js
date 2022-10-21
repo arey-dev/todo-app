@@ -29,8 +29,8 @@ const todoList = {
   },
 
   // change to clear complete
-  clearList() {
-    this.list = [];
+  clearCompleted() {
+    this.list = this.list.filter((obj) => !obj.getState());
     PubSub.publish("updateStats", this.list.length);
   },
 };
@@ -44,8 +44,8 @@ export default function subscribers() {
     todoList.deleteTodo(data);
   });
 
-  PubSub.subscribe("clearTodos", () => {
-    todoList.clearList();
+  PubSub.subscribe("clearCompleted", () => {
+    todoList.clearCompleted();
   });
 
   PubSub.subscribe("toggleState", (msg, data) => {
