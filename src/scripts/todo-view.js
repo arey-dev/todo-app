@@ -21,8 +21,8 @@ const todoView = (obj) => {
   // in case of rapid key press on check button
   checkBtn.onclick = () => {
     check.classList.toggle("check-hover");
-    title.classList.toggle("task-complete")
-    
+    taskElem.classList.toggle("task-complete");
+
     PubSub.publish("toggleState", titleText);
   };
 
