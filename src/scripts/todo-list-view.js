@@ -9,12 +9,12 @@ import PubSub from "pubsub-js";
 import todoView from "./todo-view";
 import menuView from "./menu";
 
-// transfer the pubsub in todo-list
+function removeChildren(cssSelector, parentElement) {
+  const elements = parentElement.querySelectorAll(cssSelector);
 
-const removeElemContent = (elem) => {
-  elem.innerHTML = "";
-  PubSub.publish("clearTodos");
-};
+  // transfer queried elements to a document fragment
+  new DocumentFragment().append(...elements);
+}
 
 // updates the text content of an element
 const updateText = (data, elem) => {
@@ -36,7 +36,10 @@ const todoListView = (container) => {
   container.append(content);
 
   // Events
-  clearBtn.onclick = () => removeElemContent(todosCont);
+  clearBtn.onclick = () => {
+    removeChildren(".task-complete", todosCont);
+    PubSub.publish("clearCompleted");
+  };
 
   // Pubsub
   PubSub.subscribe("addTodoUi", (msg, data) => {
