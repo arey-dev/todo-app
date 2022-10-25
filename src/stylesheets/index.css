@@ -1,12 +1,6 @@
 @import './reset.css';
 @import './base.css';
 
-body {
-  background: 
-    url('../assets/images/bg-desktop-light.jpg') top/contain no-repeat, 
-    var(--clr-theme-light-400);
-}
-
 /* header */
 
 header {
@@ -20,7 +14,7 @@ header {
 
 .container-header h1 {
   font-size: 2.5rem;
-  color: var(--clr-theme-light-400);
+  color: #fff;
   letter-spacing: clamp(5px, 1.5vw + 2px, 1rem);
 }
 
@@ -30,6 +24,11 @@ header {
   height: 26px;
   align-self: center;
   cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.theme-icon-dark {
+  background: url('../assets/images/icon-sun.svg') center/contain no-repeat;;
 }
 
 /* main */
@@ -41,67 +40,86 @@ main {
 /* input */
 
 #task-input {
-  color: var(--clr-theme-light-800);
   caret-color: var(--clr-primary-500);
-  width: 85%;
+  background: none;
+  width: 100%;
   height: 100%;
   border: 0;
   outline: 0;
   padding-top: 0.25rem;
 }
 
-#task-input::placeholder {
-  color: var(--clr-theme-light-700)
-}
-
-.user-input-container {
+#user-input-container {
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .left {
   order: 1;
 }
 
-.right {
+.middle {
   order: 2;
+  width: 85%;
+}
+
+.right {
+  order: 3;
+  align-self: center;
+  margin-left: auto;
+}
+
+/* task container */
+
+.task-list {
+  height: 22.5rem;
+  overflow-y: auto;
 }
 
 /* task */
 
-li {
-  border-bottom: 1px solid var(--clr-theme-light-500);
-}
-
 .task {
   padding: 1rem;
+  cursor: pointer;
 }
 
-.border {
+.check-btn {
   width: 1.5rem;
   height: 1.5rem;
   margin-top: 2px;
   margin-right: 1rem;
-  border: 1px solid var(--clr-theme-light-600);
+  background: url('../assets/images/icon-check.svg') no-repeat center/65%, 
+    var(--clr-primary-400);
+}
+
+.remove-btn {
+  width: 1.125rem;
+  height: 1.125rem;
+  background: url('../assets/images/icon-cross.svg') center/contain no-repeat;
+  cursor: pointer;
 }
 
 .check {
+  display: block;
   width: 100%;
   height: 100%;
-  background: hsl(0, 0%, 100%);
+  cursor: pointer;
+  transition: background 0.15s ease-out;
 }
 
-.border, .check {
+.check-btn, .check {
   border-radius: 50%;
 }
 
-.border:hover {
-  background: var(--clr-primary-400);
+.input-check:hover .check {
+  background: transparent;
+}
+
+.check-btn:hover {
   padding: 1px;
 }
 
-.task-container, .user-input-container {
-  background-color: hsl(0, 0%, 100%);
-  border: 1px solid var(--clr-theme-light-500);
+#task-container, #user-input-container {
   border-radius: 0.375rem;
 }
 
@@ -109,12 +127,24 @@ li {
 footer {
   font-size: 0.875rem;
   justify-content: space-between;
-  color: var(--clr-theme-light-700);
   padding-inline: 1rem;
 }
 
 footer.task {
   padding-block: 0.75rem;
+  gap: 0.5rem
+}
+
+footer p {
+  order: 1;
+}
+
+footer nav {
+  order: 2;
+}
+
+footer button {
+  order: 3;
 }
 
 .navbar {
@@ -125,6 +155,83 @@ footer.task {
   margin-inline: 0.5rem
 }
 
-.button:hover {
+/* toggle classes */
+.check-hover {
+  background: transparent;
+}
+
+.task-complete {
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-active {
+  color: var(--clr-primary-500);
+}
+
+/* themes */ 
+.dark-theme {
+  --clr-theme-light-400: var(--clr-theme-dark-500);
+  --clr-theme-light-500: var(--clr-theme-dark-400);
+  --clr-theme-light-600: var(--clr-theme-dark-600);
+  --clr-theme-light-700: var(--clr-theme-dark-700);
+  --clr-theme-light-800: var(--clr-theme-dark-800);
+  --clr-theme-light-900: var(--clr-theme-dark-600);
+  --clr-accent-dark: var(--clr-theme-dark-800);
+}
+
+.bg-dark {
+  background: 
+    url('../assets/images/bg-desktop-dark.jpg') top/contain no-repeat,
+    var(--clr-theme-light-500);
+}
+
+body {
+  background: 
+    url('../assets/images/bg-desktop-light.jpg') top/contain no-repeat, 
+    var(--clr-theme-light-500);
+  color: var(--clr-theme-light-900);
+  transition: all 0.15s;
+}
+
+#task-container, #user-input-container {
+  background-color: var(--clr-theme-light-400);
+  border: 1px solid var(--clr-theme-light-400);
+  transition: all 0.15s;
+}
+
+.check {
+  background: var(--clr-theme-light-400);
+}
+
+.check-btn {
+  border: 1px solid var(--clr-accent-dark);
+}
+
+.task-complete {
+  text-decoration: line-through;
   color: var(--clr-theme-light-800);
+}
+
+.button:hover {
+  color: var(--clr-theme-light-900);
+}
+
+li {
+  border-bottom: 1px solid var(--clr-accent-dark);
+}
+
+footer {
+  color: var(--clr-theme-light-800);
+}
+
+#task-input {
+  color: var(--clr-theme-light-900);
+}
+
+#task-input::placeholder {
+  color: var(--clr-theme-light-800)
 }

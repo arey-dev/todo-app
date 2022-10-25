@@ -4,11 +4,12 @@
   --clr-primary-400: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   --clr-primary-500: hsl(220, 98%, 61%);
 
-  --clr-theme-light-400: hsl(0, 0%, 98%);
-  --clr-theme-light-500: hwb(235 89% 5%);
-  --clr-theme-light-600: hsl(233, 11%, 84%);
-  --clr-theme-light-700: hsl(236, 9%, 61%);
-  --clr-theme-light-800: hsl(235, 19%, 35%);
+  --clr-theme-light-400: hsl(0, 0%, 100%);
+  --clr-theme-light-500: hsl(0, 0%, 98%);
+  --clr-theme-light-600: hsl(236, 33%, 92%);
+  --clr-theme-light-700: hsl(233, 11%, 84%);
+  --clr-theme-light-800: hsl(236, 9%, 61%);
+  --clr-theme-light-900: hsl(235, 19%, 35%);
 
   --clr-theme-dark-400: hsl(235, 21%, 11%);
   --clr-theme-dark-500: hsl(235, 24%, 19%);
@@ -17,7 +18,7 @@
   --clr-theme-dark-800: hsl(233, 14%, 35%);
   --clr-theme-dark-900: hsl(237, 14%, 26%);
 
-  --clr-accent-dark: hsl(234, 11%, 52%);
+  --clr-accent-dark: hsl(236, 33%, 92%);
 
   /* fonts */
   --ff-primary: "Josefin Sans", sans-serif;
@@ -58,9 +59,9 @@ h6 {
 .button {
   padding: 0;
   line-height: 1;
-  color: var(--clr-theme-light-700);
   border: 0;
   background-color: transparent;
+  color: var(--clr-theme-light-800);
   cursor: pointer;
 }
 
